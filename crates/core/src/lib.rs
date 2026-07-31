@@ -177,16 +177,15 @@ mod tests {
 
     #[test]
     fn sensitive_values_are_redacted() {
-        let step = Step::new(1, ActionKind::Input, "api-token", Actor::User)
-            .with_value("super-secret");
+        let step =
+            Step::new(1, ActionKind::Input, "api-token", Actor::User).with_value("super-secret");
         assert!(step.sensitive);
         assert_eq!(step.value.as_deref(), Some("[REDACTED]"));
     }
 
     #[test]
     fn normal_values_are_preserved() {
-        let step = Step::new(1, ActionKind::Input, "track_title", Actor::User)
-            .with_value("Stoned");
+        let step = Step::new(1, ActionKind::Input, "track_title", Actor::User).with_value("Stoned");
         assert!(!step.sensitive);
         assert_eq!(step.value.as_deref(), Some("Stoned"));
     }
