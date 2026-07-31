@@ -160,8 +160,7 @@ mod tests {
     fn round_trips_a_session() {
         let workflow = Workflow::new("soundcloud_upload");
         let mut session = Session::new(&workflow, AgentMode::Observation);
-        let mut step = Step::new(1, ActionKind::Input, "title", Actor::User)
-            .with_value("Stoned");
+        let mut step = Step::new(1, ActionKind::Input, "title", Actor::User).with_value("Stoned");
         step.status = StepStatus::Success;
         session.push_step(step);
 
