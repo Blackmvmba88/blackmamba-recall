@@ -1,0 +1,43 @@
+{
+  "workflow": "soundcloud_upload",
+  "version": 1,
+  "mode": "assisted",
+  "final_confirmation_required": true,
+  "steps": [
+    {
+      "index": 1,
+      "action": "input",
+      "target": "track_title",
+      "value": "Stoned",
+      "actor": "user",
+      "confidence": null,
+      "status": "success"
+    },
+    {
+      "index": 2,
+      "action": "select",
+      "target": "genre",
+      "value": "Alternative Rock",
+      "actor": "agent",
+      "confidence": 0.94,
+      "status": "success"
+    },
+    {
+      "index": 3,
+      "action": "click",
+      "target": "metadata_tab",
+      "actor": "agent",
+      "confidence": 0.96,
+      "status": "success"
+    },
+    {
+      "index": 4,
+      "action": "click",
+      "target": "publish_track",
+      "actor": "agent",
+      "confidence": 0.99,
+      "status": "waiting",
+      "decision": "require_user_confirmation"
+    }
+  ]
+}
