@@ -152,10 +152,14 @@ impl Session {
 }
 
 pub fn is_sensitive_target(target: &str) -> bool {
-    let normalized = target
+    let normalized: String = target
         .to_ascii_lowercase()
-        .replace('-', "_")
-        .replace(' ', "_");
+        .chars()
+        .map(|character| match character {
+            '-' | ' ' => '_',
+            other => other,
+        })
+        .collect();
     [
         "password",
         "passwd",
