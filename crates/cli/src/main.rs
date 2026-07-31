@@ -43,19 +43,18 @@ fn main() -> Result<()> {
 
 fn run_soundcloud_demo(path: PathBuf) -> Result<()> {
     let mut workflow = Workflow::new("soundcloud_upload");
-    workflow.description = Some(
-        "Offline simulation only. The final publish action always remains manual.".into(),
-    );
+    workflow.description =
+        Some("Offline simulation only. The final publish action always remains manual.".into());
 
     let mut session = Session::new(&workflow, AgentMode::Observation);
 
-    let mut title = Step::new(1, ActionKind::Input, "track_title", Actor::User)
-        .with_value("Stoned");
+    let mut title =
+        Step::new(1, ActionKind::Input, "track_title", Actor::User).with_value("Stoned");
     title.status = StepStatus::Success;
     session.push_step(title);
 
-    let mut genre = Step::new(2, ActionKind::Select, "genre", Actor::Agent)
-        .with_value("Alternative Rock");
+    let mut genre =
+        Step::new(2, ActionKind::Select, "genre", Actor::Agent).with_value("Alternative Rock");
     genre.confidence = Some(0.94);
     genre.status = StepStatus::Success;
     session.push_step(genre);
