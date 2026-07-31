@@ -108,7 +108,10 @@ impl Store {
                 format!("{:?}", session.mode).to_ascii_lowercase(),
                 payload,
                 session.started_at.to_rfc3339(),
-                session.completed_at.map(|value| value.to_rfc3339()),
+                session
+                    .completed_at
+                    .as_ref()
+                    .map(|value| value.to_rfc3339()),
             ],
         )?;
 
