@@ -113,7 +113,7 @@ impl WorkflowEngine {
 
 fn is_final_action(step: &Step) -> bool {
     let target = step.target.to_ascii_lowercase();
-    matches!(step.action, ActionKind::Confirm)
+    matches!(&step.action, ActionKind::Confirm)
         || ["publish", "release", "submit", "delete", "purchase"]
             .iter()
             .any(|needle| target.contains(needle))

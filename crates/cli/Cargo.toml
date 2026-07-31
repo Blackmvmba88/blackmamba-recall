@@ -1,0 +1,18 @@
+[package]
+name = "recall-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "recall"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+recall-core = { path = "../core" }
+recall-storage = { path = "../storage" }
+recall-workflow-engine = { path = "../workflow-engine" }
+serde_json.workspace = true

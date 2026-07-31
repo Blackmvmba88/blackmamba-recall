@@ -108,7 +108,10 @@ impl Store {
                 format!("{:?}", session.mode).to_ascii_lowercase(),
                 payload,
                 session.started_at.to_rfc3339(),
-                session.completed_at.map(|value| value.to_rfc3339()),
+                session
+                    .completed_at
+                    .as_ref()
+                    .map(|value| value.to_rfc3339()),
             ],
         )?;
 
@@ -157,8 +160,7 @@ mod tests {
     fn round_trips_a_session() {
         let workflow = Workflow::new("soundcloud_upload");
         let mut session = Session::new(&workflow, AgentMode::Observation);
-        let mut step = Step::new(1, ActionKind::Input, "title", Actor::User)
-            .with_value("Stoned");
+        let mut step = Step::new(1, ActionKind::Input, "title", Actor::User).with_value("Stoned");
         step.status = StepStatus::Success;
         session.push_step(step);
 
